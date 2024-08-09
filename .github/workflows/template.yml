@@ -57,5 +57,8 @@ jobs:
         - name: Use The Input
           run: echo "You entered ${{ inputs.some_variable_name }} for the first variable and
             ${{ inputs.some_other_variable_name }} for the second variable."
+        #Displays any client payload data that is supplied from the repository_dispatch
+        - name: Repo Dispatch
+          run: 'echo "You entered ${{ github.event.client_payload }}"'
         
         
