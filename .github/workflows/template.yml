@@ -46,6 +46,7 @@ on:
 jobs:
   My_Cool_Job_Name: 
       #Must escape if expression starts with a ! (bang), since ! is reserved notation in YAML
+      #if statements can be on the job and/or a step
       if: github.repository == 'TroyGuessford/Github-Examples'
       #Specifying the wrong target here will cause the job to wait for a runner indefinately
       #runs-on: ubuntu-latets
@@ -64,6 +65,43 @@ jobs:
           run: 'echo "You entered ${{ toJson(github.event.client_payload) }}"'
         - name: Repo Dispatch 2
           run: 'echo "You entered ${{ github.event.client_payload.key }}"'
-          
-        
-        
+        #Set Env Vars
+        - name: Set environment varible
+          run: echo "ACTION_ENV=production" >> $GITHUB_ENV
+        - name: Adding to System Path
+          run: echo "/path/to/dir" >> $GITHUB_PATH
+        #Set Output to use in another job
+        - name: Set Output
+          id: example_step #required if accessed
+          run: echo "result=output_value" >> $GITHUB_OUTPUT
+        #Use Output from another job
+        - name: Use Output
+          run: echo "The output was ${{ steps.example_step.outputs.result }}"
+        - name: Create debug message
+          run: echo "::debug::This is a debug message"
+
+
+#functions
+# contains(searchString, searchValue)
+# startwWith(searchString, searchValue)
+# endsWith(searchString, searchValue)
+# format(string, replaceValue 0...N)
+# join(array, optionalSeparator)
+# toJSON(value)
+# fromJSON(value)
+# hashFiles(path)
+
+#Status Check Functions
+# success()
+# always()
+# cancelled()
+# failure()
+
+#runs-on: 
+# ubuntu-latest
+# ubuntu-22.04
+# windows-latest
+# windows-2022
+# windows-2019
+# macos-latest
+# macos-14
