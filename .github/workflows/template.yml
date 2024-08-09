@@ -44,8 +44,7 @@ jobs:
         #Checkout the main? branch
         - uses: actions/checkout@v2
         - name: Use The Input
-          run: |
-            echo "You entered ${{ inputs.some_variable_name }} for the first variable and
+          run: echo "You entered ${{ inputs.some_variable_name }} for the first variable and
             ${{ inputs.some_other_variable_name }} for the second variable."
         
         
