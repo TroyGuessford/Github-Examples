@@ -5,9 +5,9 @@ on:
     branches:
       - main
       - dev
-  #push:
-  #  branches:
-  #    - main
+  push:
+    branches:
+      - main
   #Schedule can use a cron expression to trigger a workflow at a specific time of day
   #Only runs on the main branch
   #Runs only once per every 5 minutes
