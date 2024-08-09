@@ -1,4 +1,4 @@
-name: Master Template
+name: MasterTemplate
 
 on: 
   #Schedule can use a cron expression to trigger a workflow at a specific time of day
