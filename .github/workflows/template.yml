@@ -24,11 +24,11 @@ on:
   workflow_dispatch:
     inputs:
       some_variable_name:
-        description: 'The description of the variable'
+        description: 'Some description of the variable'
         required: true
         type: string
       some_other_variable_name:
-        description: 'The description of the variable'
+        description: 'Some description of the variable'
         required: true
         type: string
 
@@ -38,7 +38,14 @@ jobs:
       #runs-on: ubuntu-latets
       runs-on: ubuntu-latest
       steps:
+        #Displays the server time to the workflow log
         - name: Do Work Son
           run: echo "The current server time is $(date)"
+        #Checkout the main? branch
         - uses: actions/checkout@v2
+        - name: Use The Input
+          run: |
+            echo "You entered ${{ inputs.some_variable_name }} for the first variable and | 
+            ${{ inputs.some_other_variable_name }} for the second variable."
+        
         
