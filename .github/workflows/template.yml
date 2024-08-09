@@ -50,7 +50,7 @@ jobs:
       - name: "Display {github.action}"
         env:
           SOME_COOL_ENV_VAR: "Troy"
-      - run: echo "Hello! $SOME_COOL_ENV_VAR"
+        run: echo "Hello! $SOME_COOL_ENV_VAR"
   My_Cool_Job_Name: 
       #Must escape if expression starts with a ! (bang), since ! is reserved notation in YAML
       #if statements can be on the job and/or a step
