@@ -45,6 +45,7 @@ on:
 
 jobs:
   My_Cool_Job_Name: 
+      if: github.repository == 'TroyGuessford/Github-Examples'
       #Specifying the wrong target here will cause the job to wait for a runner indefinately
       #runs-on: ubuntu-latets
       runs-on: ubuntu-latest
