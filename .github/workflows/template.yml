@@ -1,0 +1,9 @@
+name: Template
+
+on: 
+  #Schedule can use a cron expression to trigger a workflow at a specific time of day
+  schedule:
+    #Runs at 5:30 only on Monday and Wednesday
+    - cron: '30 5 * * 1,3'
+    #Runs at 05:30, on day 1 of the month, and on Tuesday and Thursday.
+    - cron: '30 5 1 * 2,4'
