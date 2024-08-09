@@ -44,10 +44,17 @@ on:
       - webhook
 
 jobs:
+  Context_Example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Display {github.action}"
+        env:
+          SOME_COOL_ENV_VAR: "Troy"
+      - run: echo "Hello! $SOME_COOL_ENV_VAR"
   My_Cool_Job_Name: 
       #Must escape if expression starts with a ! (bang), since ! is reserved notation in YAML
       #if statements can be on the job and/or a step
-      if: github.repository == 'TroyGuessford/Github-Examples'
+      if: github.repository != 'TroyGuessford/Github-Examples'
       #Specifying the wrong target here will cause the job to wait for a runner indefinately
       #runs-on: ubuntu-latets
       runs-on: ubuntu-latest
@@ -105,3 +112,17 @@ jobs:
 # windows-2019
 # macos-latest
 # macos-14
+
+#contexts
+# github
+# env
+# vars
+# job
+# jobs
+# steps
+# runner
+# secrets
+# strategy
+# matrix
+# needs
+# inputs
