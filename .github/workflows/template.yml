@@ -59,6 +59,9 @@ jobs:
             ${{ inputs.some_other_variable_name }} for the second variable."
         #Displays any client payload data that is supplied from the repository_dispatch
         - name: Repo Dispatch
-          run: 'echo "You entered ${{ github.event.client_payload }}"'
+          run: 'echo "You entered ${{ toJson(github.event.client_payload) }}"'
+        - name: Repo Dispatch 2
+          run: 'echo "You entered ${{ github.event.client_payload.key }}"'
+          
         
         
