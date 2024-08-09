@@ -19,6 +19,18 @@ on:
     #Runs at 05:30, on day 1 of the month, and on Tuesday and Thursday.
     #- cron: '30 5 1 * 2,4'
     - cron: '*/3 * * * *'
+  #Manual Event
+  #Up to 10 inputs
+  workflow_dispatch:
+    inputs:
+      some_variable_name:
+        description: 'The description of the variable'
+        required: true
+        type: string
+      some_other_variable_name:
+        description: 'The description of the variable'
+        required: true
+        type: string
 
 jobs:
   My_Cool_Job_Name: 
