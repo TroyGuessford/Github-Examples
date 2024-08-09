@@ -4,6 +4,14 @@ on:
   #Schedule can use a cron expression to trigger a workflow at a specific time of day
   schedule:
     #Runs at 5:30 only on Monday and Wednesday
-    - cron: '30 5 * * 1,3'
+    #- cron: '30 5 * * 1,3'
     #Runs at 05:30, on day 1 of the month, and on Tuesday and Thursday.
-    - cron: '30 5 1 * 2,4'
+    #- cron: '30 5 1 * 2,4'
+    - cron: '*/2 * 9 * *'
+
+jobs:
+  My_Cool_Job_Name: 
+      runs-on: ubuntu-latets
+      steps:
+        - name: Do Work Son
+          run: echo "The current server time is $(date)"
