@@ -5,20 +5,21 @@ on:
     branches:
       - main
       - dev
-  push:
-    branches:
-      - main
+  #push:
+  #  branches:
+  #    - main
   #Schedule can use a cron expression to trigger a workflow at a specific time of day
   #Only runs on the main branch
   #Runs only once per every 5 minutes
   release:
     types: [published, created]
-  schedule:
+  #schedule:
     #Runs at 5:30 only on Monday and Wednesday
     #- cron: '30 5 * * 1,3'
     #Runs at 05:30, on day 1 of the month, and on Tuesday and Thursday.
     #- cron: '30 5 1 * 2,4'
-    - cron: '*/3 * * * *'
+    #Runs every 5 minutes (not 3)
+    #- cron: '*/3 * * * *'
   #Manual Event
   #Up to 10 inputs
   workflow_dispatch:
@@ -31,6 +32,15 @@ on:
         description: 'Some description of the variable'
         required: true
         type: string
+  #You can trigger a workflow via an external http endpoint.
+  #Will only trigger a workflow run if the workflow file is on the default branch
+
+  #Example
+  # curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token {your PAT w/ repo access}" \
+  #  -d '{"event_type": "webhook", "client_payload": {"key":"value"}}' \ https://api.github.com/repos/....
+  repository_dispatch:
+    types:
+      - webhook
 
 jobs:
   My_Cool_Job_Name: 
