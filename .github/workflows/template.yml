@@ -44,13 +44,30 @@ on:
       - webhook
 
 jobs:
-  Context_Example:
+  Job1:
     runs-on: ubuntu-latest
     steps:
       - name: "Display {github.action}"
         env:
           SOME_COOL_ENV_VAR: "Troy"
-        run: echo "Hello! $SOME_COOL_ENV_VAR"
+        run: echo "Job1! $SOME_COOL_ENV_VAR"
+
+  Job2:
+    needs: [Job1, Job3]
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Display {github.action}"
+        env:
+          SOME_COOL_ENV_VAR: "Troy"
+        run: echo "Job2! $SOME_COOL_ENV_VAR"
+
+  Job3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Display {github.action}"
+        env:
+          SOME_COOL_ENV_VAR: "Troy"
+        run: echo "Job3! $SOME_COOL_ENV_VAR"
   My_Cool_Job_Name: 
       #Must escape if expression starts with a ! (bang), since ! is reserved notation in YAML
       #if statements can be on the job and/or a step
