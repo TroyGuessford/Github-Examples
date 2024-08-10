@@ -43,9 +43,14 @@ on:
     types:
       - webhook
 
+env: 
+  THIS_IS_A_TOP_LEVEL_VARIABLE: "King"
+
 jobs:
   Job1:
     runs-on: ubuntu-latest
+    env:
+      THIS_IS_A_JOB_LEVEL_VARIABLE: "Prince"
     steps:
       - name: "Display {github.action}"
         env:
@@ -68,6 +73,15 @@ jobs:
         env:
           SOME_COOL_ENV_VAR: "Troy"
         run: echo "Job3! $SOME_COOL_ENV_VAR"
+
+  Job4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Display {github.action}"
+        with: #with cannot be used with run command
+          variable1: ${{ env.REGISTRY }}
+        uses: actions/checkout@v4
+        
   My_Cool_Job_Name: 
       #Must escape if expression starts with a ! (bang), since ! is reserved notation in YAML
       #if statements can be on the job and/or a step
@@ -143,3 +157,9 @@ jobs:
 # matrix
 # needs
 # inputs
+
+#Setting Env Vars
+# You can use echo "DYNAMIC_VAR=Hello King" >> $GITHUB_ENV
+
+#Using Env Vars
+# You can use echo "The value of DYNAMIC_VAR is: $DYNAMIC_VAR
